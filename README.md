@@ -1,5 +1,5 @@
 # DNT
-DNotTrust
+DntNotTrust
 
 ### COPYRIGHT NOTICE:
 
