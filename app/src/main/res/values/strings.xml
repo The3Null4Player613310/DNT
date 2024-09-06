@@ -1,3 +1,5 @@
 <resources>
+    <string name="app_logo">DNT</string>
     <string name="app_name">DNT</string>
+    <string name="app_name_full">dnt not trust</string>
 </resources>
