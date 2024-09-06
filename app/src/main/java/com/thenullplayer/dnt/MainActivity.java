@@ -7,10 +7,16 @@
 package com.thenullplayer.dnt;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity
 {
+    ProgressBar button = null;
+    TextView text = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,7 +25,11 @@ public class MainActivity extends AppCompatActivity
 
         //set the layout
         setContentView(R.layout.activity_main);
-        
+
+        button = (ProgressBar) findViewById(R.id.progressBar);
+        button.setOnClickListener(new ButtonClickListener());
+
+        text = (TextView) findViewById(R.id.textViewLogo);
     }
 
     @Override
@@ -56,5 +66,28 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
+
+        button.setOnClickListener(null);
+        button = null;
+    }
+
+    class ButtonClickListener implements View.OnClickListener
+    {
+        int count = 0;
+
+        public ButtonClickListener()
+        {
+
+        }
+
+        public void onClick(View vIn)
+        {
+            count = count+1;
+
+            if(count == 9)
+            {
+                //launch alpha testing activity.
+            }
+        }
     }
 }
