@@ -6,6 +6,7 @@
 
 package com.thenullplayer.dnt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -86,7 +87,11 @@ public class MainActivity extends AppCompatActivity
 
             if(count == 9)
             {
+                count = 0;
                 //launch alpha testing activity.
+                Intent intent = new Intent();
+                intent.setAction("com.thenullplayer.dnt.MAIN");
+                startActivity(intent);
             }
         }
     }
