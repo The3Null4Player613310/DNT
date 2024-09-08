@@ -45,5 +45,6 @@ jobs:
 #            path-to-apk: ./app/alpha/app-alpha.apk
 #            track: internal
 #            status: draft
-#      - name: DONE
-#        run: 'echo DONE'
+
+      - name: DONE
+        run: 'echo DONE'
