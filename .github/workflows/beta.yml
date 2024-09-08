@@ -12,6 +12,7 @@ jobs:
       - name: FIND VARIABLES
         run: |
           export APK_VERSION=$(cat ./version);
+
   test_job:
     needs: build_job
     runs-on: ubuntu-latest
@@ -35,14 +36,15 @@ jobs:
       - name: DEPLOY
         run: 'echo DEPLOYING;'
         
-      - name: UPLOAD
-        uses: vacxe/google-play-cli@0.4.4
-        with:
-            service-account-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-            version-code: 0.0.0
-            package-name: com.thenullplayer.dnt
-            path-to-apk: ./app/beta/app-beta.apk
-            track: internal
-            status: draft
+#      - name: UPLOAD
+#        uses: vacxe/google-play-cli@0.4.4
+#        with:
+#            service-account-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+#            version-code: 0.0.0
+#            package-name: com.thenullplayer.dnt
+#            path-to-apk: ./app/beta/app-beta.apk
+#            track: internal
+#            status: draft
+  
       - name: DONE
         run: 'echo DONE;'
