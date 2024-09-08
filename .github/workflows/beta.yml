@@ -1,0 +1,48 @@
+name: BETA WORKFLOW
+on:
+  push:
+    branches:
+      - 'beta/*'
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CHECK OUT - BETA
+        uses: actions/checkout@beta
+      - name: FIND VARIABLES
+        run: |
+          export APK_VERSION=$(cat ./version);
+  test_job:
+    needs: build_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: RUN TEST A
+        run: |
+          echo TEST: BEGIN;
+          echo VER: ${APK_VERSION};
+          echo TEST: DONE;
+          
+      - name: RUN TEST B
+        run: 'echo TEST: DONE;'
+        
+      - name: RUN TEST C
+        run: 'echo TEST: DONE;'
+        
+  deploy_job:
+    needs: test_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: DEPLOY
+        run: 'echo DEPLOYING;'
+        
+      - name: UPLOAD
+        uses: vacxe/google-play-cli@0.4.4
+        with:
+            service-account-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+            version-code: 0.0.0
+            package-name: com.thenullplayer.dnt
+            path-to-apk: ./app/beta/app-beta.apk
+            track: internal
+            status: draft
+      - name: DONE
+        run: 'echo DONE;'
