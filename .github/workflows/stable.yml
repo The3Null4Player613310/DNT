@@ -1,0 +1,57 @@
+name: RELEASE WORKFLOW
+on:
+  push:
+    branches:
+      - 'stable/*'
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CHECK OUT - STABLE
+        uses: actions/checkout@stable
+        
+      - name: find varibles
+        run: |
+          export APK_VERSION=$(cat ./version);
+  test_job:
+    needs: build_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: RUN TEST A
+        run: |
+          echo TEST: BEGIN;
+          echo VER: "${APK_VERSION}";
+          echo TEST: DONE;
+      
+      - name: EXPORT
+        run: 'export APK_VERSION=$(cat ./version);'
+      
+      - name: RUN TEST B
+        run: |
+          echo TEST: BEGIN;
+          echo VER: "${APK_VERSION}";
+          echo TEST: DONE;
+        
+      - name: RUN TEST C
+        run: |
+          export APK_VERSION=$(cat ./version);
+          echo TEST: BEGIN;
+          echo VER: "${APK_VERSION}";
+          echo TEST: DONE;
+        
+  deploy_job:
+    needs: test_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: DEPLOY
+        run: 'echo DEPLOYING;'
+        
+      - name: UPLOAD
+        uses: vacxe/google-play-cli@0.4.4
+        with:
+            service-account-json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+            version-code: 0.0.0
+            package-name: com.thenullplayer.dnt
+            path-to-apk: ./app/release/app-release.apk
+            track: internal
+            status: draft
