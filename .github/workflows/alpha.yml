@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: CHECK OUT - ALPHA
         uses: actions/checkout@alpha
-      - name: find varibles
+      - name: FIND VARIABLES
         run: |
           export APK_VERSION=$(cat ./version);
   
