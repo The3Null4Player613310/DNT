@@ -55,4 +55,7 @@ jobs:
 #            package-name: com.thenullplayer.dnt
 #            path-to-apk: ./app/release/app-release.apk
 #            track: internal
-            status: draft
+#            status: draft
+
+      - name: DONE
+        run: 'echo Done;'
