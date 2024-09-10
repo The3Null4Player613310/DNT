@@ -2,7 +2,7 @@ name: MAIN WORKFLOW
 on:
   push:
     branches:
-      - 'main/*'
+      - "main/*"
 jobs:
   build_job:
     runs-on: ubuntu-latest
