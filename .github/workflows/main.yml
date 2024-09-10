@@ -27,8 +27,6 @@ jobs:
           architecture: 'x64'
       - name: PRINT PYTHON VERSION
         run: python version.py
-      - name: PIP3
-        run: python pip3
       - name: PIP
         run: python pip
   
