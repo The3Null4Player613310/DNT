@@ -12,6 +12,10 @@ jobs:
       - name: FIND VARIABLES
         run: |
           export APK_VERSION=$(cat ./version);
+      - name: PWD
+        run: 'pwd'
+      - name: LS
+        run: 'ls'
   
   test_job:
     needs: build_job
