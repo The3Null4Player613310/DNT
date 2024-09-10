@@ -27,8 +27,6 @@ jobs:
           architecture: 'x64'
       - name: PRINT PYTHON VERSION
         run: python version.py
-      - name: PIP
-        run: python pip
   
 #  deploy_job:
 #    needs: test_job
