@@ -7,29 +7,17 @@ jobs:
   build_job:
     runs-on: ubuntu-latest
     steps:
-      - name: CHECK OUT - ALPHA
+      - name: CHECK OUT - MAIN
         uses: actions/checkout@v4
-      - name: FIND VARIABLES
-        run: |
-          export APK_VERSION=$(cat ./version);
-      - name: PWD
-        run: 'pwd'
-      - name: LS
-        run: 'ls'
+#      - name: PWD
+#        run: 'pwd'
+#      - name: LS
+#        run: 'ls'
   
   test_job:
     needs: build_job
     runs-on: ubuntu-latest
     steps:
-      - name: RUN TEST A
-        run: |
-          echo TEST: BEGIN
-          echo VER: ${APK_VERSION}
-          echo TEST: DONE
-          
-      - name: RUN TEST B
-        run: 'echo TEST: DONE'
-        
       - name: CHECK OUT
         uses: actions/checkout@v4
       - name: SETUP PYTHON
@@ -38,7 +26,7 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
       - name: PRINT PYTHON VERSION
-        run: python -c "import sys; print(sys.version)"
+        run: python version.py
   
 #  deploy_job:
 #    needs: test_job
