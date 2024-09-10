@@ -30,11 +30,11 @@ jobs:
       - name: INSTALL VIRTUALENV
         run: pip3 install virtualenv
       - name: SETUP VIRTUALENV
-          virtualenv python
+        run: virtualenv python
       - name: ACTIVATE VIRTUALENV
-          source python/bin/activate
+        run: source python/bin/activate
       - name: INSTALL GOOGLE API
-          python/bin/pip install google-api-python-client;
+        run: python/bin/pip install google-api-python-client;
 
 #  deploy_job:
 #    needs: test_job
