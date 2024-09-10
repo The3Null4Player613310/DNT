@@ -27,13 +27,14 @@ jobs:
           architecture: 'x64'
       - name: PRINT PYTHON VERSION
         run: python version.py
+      - name: INSTALL VIRTUALENV
+        run: pip3 install virtualenv
       - name: SETUP VIRTUALENV
-        run: |
-          pip3 install virtualenv;
-          virtualenv python;
-          source python/bin/activate;
+          virtualenv python
+      - name: ACTIVATE VIRTUALENV
+          source python/bin/activate
       - name: INSTALL GOOGLE API
-          python/bin/pip install google-api-python-client
+          python/bin/pip install google-api-python-client;
 
 #  deploy_job:
 #    needs: test_job
