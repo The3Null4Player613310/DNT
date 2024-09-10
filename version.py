@@ -6,4 +6,8 @@
 
 import sys;
 
-print(sys.version);
+main():
+    print(sys.version);
+
+if __name__ == "__main__":
+    main()
