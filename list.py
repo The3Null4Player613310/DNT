@@ -31,8 +31,8 @@ def main():
                         KEY = args[i+1];
                         break;
                      case "--sai":
-                         SAI = args[i+1];
-                         break;
+                        SAI = args[i+1];
+                        break;
             else:
                 for v in val:
                     match v:
