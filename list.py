@@ -45,9 +45,9 @@ def main():
                              args = args[0:i] + args[i+1:];
                              break;
                          case "i":
-                              SAI = args[i+1];
-                              args = args[0:i] + args[i+1:];
-                              break;
+                             SAI = args[i+1];
+                             args = args[0:i] + args[i+1:];
+                             break;
 
     print("LIST:");
     
