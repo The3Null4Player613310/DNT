@@ -54,7 +54,7 @@ def main():
     print("LIST:");
     
     #get service account info
-    sa_info = json.load(SAI)
+    sa_info = json.loads(SAI)
     
     #setup credentials
     cred = sa.Credentials.from_service_account_info(sa_info, scopes=[URL])
