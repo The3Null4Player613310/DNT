@@ -5,13 +5,15 @@
 ################################################################
 
 import sys
-from oauth2client import client as cl;
+#from oauth2client import client as cl;
 import httplib2 as hlib;
+from oauth2 import service_account as sa;
 
 PACKAGE = "com.thenullplayer.dnt"
 URL = "https://www.googleapis.com/auth/androidpublisher";
 SAE = "";
 KEY = "";
+SAI = "";
 
 def main():
 
@@ -28,6 +30,9 @@ def main():
                     case "--key":
                         KEY = args[i+1];
                         break;
+                     case "--sai":
+                         SAI = args[i+1];
+                         break;
             else:
                 for v in val:
                     match v:
@@ -39,15 +44,27 @@ def main():
                              KEY = args[i+1];
                              args = args[0:i] + args[i+1:];
                              break;
+                         case "i":
+                              SAI = args[i+1];
+                              args = args[0:i] + args[i+1:];
+                              break;
 
     print("LIST:");
     
+    #get service account info
+    sa_info = json.load(SAI)
+    
     #setup credentials
-    cred = cl.SignedJwtAssertionCredentials(SAE, KEY, scope=URL);
+    cred = sa.Credentials.from_service_account_info(sa_info, scopes=[URL])
+    
+    #setup credentials # old
+    #cred = cl.SignedJwtAssertionCredentials(SAE, KEY, scope=URL);
     
     #setup http
     http = hlib.Http();
-    http = cred.authorize(http);
+    #http = cred.authorize(http);
+    
+    cred.apply(http);
     
     #setup service
     service = build("androidpublisher", "v3", http=http);
@@ -59,8 +76,8 @@ def main():
         result = edit_request.execute();
         print(result);
         
-    except cl.AccessTokenRefreshError:
-      print("Token Error");
+    except GoogleAuthError:
+        print("Token Error");
     
     return 0;
 
