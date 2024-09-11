@@ -36,7 +36,7 @@ jobs:
       - name: INSTALL GOOGLE API
         run: python/bin/pip install google-api-python-client;
       - name: LIST APKS
-        run: python/bin/python list.py --sai "${{ secrets.SAI }}";
+        run: python/bin/python list.py --sai '${{ secrets.SAI }}';
 #  deploy_job:
 #    needs: test_job
 #    runs-on: ubuntu-latest
