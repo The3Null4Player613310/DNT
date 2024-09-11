@@ -53,7 +53,7 @@ def main():
     service = build("androidpublisher", "v3", http=http);
     
     try:
-        edit_request = service.edits().insert(body={}, PACKAGE);
+        edit_request = service.edits().insert(body={}, packageName=PACKAGE);
         print(edit_request);
         
         result = edit_request.execute();
