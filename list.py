@@ -59,6 +59,9 @@ def main():
         result = edit_request.execute();
         print(result);
         
+    except cl.AccessTokenRefreshError:
+      print("Token Error");
+    
     return 0;
 
 if __name__ == "__main__":
