@@ -80,15 +80,20 @@ def main():
     
     try:
         edit_request = service.edits().insert(body={}, packageName=PACKAGE);
-        print(edit_request);
+        #print(edit_request);
         
         result = edit_request.execute();
-        print(result);
+        #print(result);
         
         ei = result["id"];
         
-        result = service.edits().apks().list(editId=ei, packageName=PACKAGE).execute();
-        print(result);
+        list_request = service.edits().apks().list(editId=ei, packageName=PACKAGE);
+        
+        result = list_request.execute();
+        #print(result);
+        
+        for apk in result["apks"]:
+            print(apk["versionCode"], apk["binary"]["sha1"]);
         
     except GoogleAuthError:
         print("Token Error");
