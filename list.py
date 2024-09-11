@@ -58,10 +58,10 @@ def main():
     print("LIST:");
     
     #get service account info
-    sa_info = json.loads(SAI)
+    sa_info = json.loads(SAI);
     
     #setup credentials
-    cred = sa.Credentials.from_service_account_info(sa_info, scopes=[URL])
+    cred = sa.Credentials.from_service_account_info(sa_info, scopes=[URL]);
     
     
     #setup credentials # old
@@ -83,6 +83,11 @@ def main():
         print(edit_request);
         
         result = edit_request.execute();
+        print(result);
+        
+        ei = result["id"];
+        
+        result = service.edits().apks().list(editId=ei, packageName=PACKAGE);
         print(result);
         
     except GoogleAuthError:
