@@ -6,10 +6,14 @@
 
 import sys
 import json
-import httplib2 as hlib;
+import urllib3 as ulib;
+import requests as req;
+#import httplib2 as hlib;
 from sys import argv
 #from oauth2client import client as cl;
+import googleapiclient.discovery as api
 from google.oauth2 import service_account as sa;
+
 
 PACKAGE = "com.thenullplayer.dnt"
 URL = "https://www.googleapis.com/auth/androidpublisher";
@@ -59,17 +63,20 @@ def main():
     #setup credentials
     cred = sa.Credentials.from_service_account_info(sa_info, scopes=[URL])
     
+    
     #setup credentials # old
     #cred = cl.SignedJwtAssertionCredentials(SAE, KEY, scope=URL);
     
     #setup http
-    http = hlib.Http();
+    #http = hlib.Http();
     #http = cred.authorize(http);
     
-    cred.apply(http);
+    #cred.apply(http);
     
     #setup service
-    service = build("androidpublisher", "v3", http=http);
+    #service = build("androidpublisher", "v3", http=http);
+    
+    service = api.build("androidpublisher", "v3", credentials=cred);
     
     try:
         edit_request = service.edits().insert(body={}, packageName=PACKAGE);
