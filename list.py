@@ -87,7 +87,7 @@ def main():
         
         ei = result["id"];
         
-        result = service.edits().apks().list(editId=ei, packageName=PACKAGE);
+        result = service.edits().apks().list(editId=ei, packageName=PACKAGE).execute();
         print(result);
         
     except GoogleAuthError:
