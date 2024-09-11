@@ -18,6 +18,10 @@ jobs:
     needs: build_job
     runs-on: ubuntu-latest
     steps:
+      - name: SET UP ENVIROMENT
+        env:
+          KEY: ${{ secrets.KEY }}
+          SAE: ${{ secrets.SAE }}
       - name: CHECK OUT
         uses: actions/checkout@v4
       - name: SETUP PYTHON
