@@ -30,7 +30,7 @@ def main():
                     case "--key":
                         KEY = args[i+1];
                         break;
-                     case "--sai":
+                    case "--sai":
                         SAI = args[i+1];
                         break;
             else:
@@ -44,7 +44,7 @@ def main():
                              KEY = args[i+1];
                              args = args[0:i] + args[i+1:];
                              break;
-                         case "i":
+                        case "i":
                              SAI = args[i+1];
                              args = args[0:i] + args[i+1:];
                              break;
