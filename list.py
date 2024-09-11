@@ -7,7 +7,7 @@
 import sys
 #from oauth2client import client as cl;
 import httplib2 as hlib;
-from oauth2 import service_account as sa;
+from google.oauth2 import service_account as sa;
 
 PACKAGE = "com.thenullplayer.dnt"
 URL = "https://www.googleapis.com/auth/androidpublisher";
