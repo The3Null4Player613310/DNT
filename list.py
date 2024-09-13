@@ -29,7 +29,7 @@ def r_print(a, n):
         r_print(k, n+1);
     return;
 
-def r_print(a)
+def r_print(a):
     r_print(a, 0);
     return;
 
