@@ -5,12 +5,13 @@
 ################################################################
 
 import sys
+from   sys import argv;
 import json
 import urllib3 as ulib;
 import requests as req;
-import google.auth.exceptions;
+from   google.auth.exceptions import GoogleAuthError;
 #import httplib2 as hlib;
-from sys import argv;
+
 #from oauth2client import client as cl;
 import googleapiclient.discovery as api;
 from google.oauth2 import service_account as sa;
@@ -93,8 +94,11 @@ def main():
         result = list_request.execute();
         #print(result);
         
-        for apk in result["apks"]:
-            print(apk["versionCode"], apk["binary"]["sha1"]);
+        for val in result:
+            print(val);
+        
+        #for apk in result["apks"]:
+            #print(apk["versionCode"], apk["binary"]["sha1"]);
         
     except GoogleAuthError:
         print("Token Error");
