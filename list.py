@@ -96,6 +96,8 @@ def main():
         
         for val in result:
             print(val);
+            for v in val:
+                print(v);
         
         #for apk in result["apks"]:
             #print(apk["versionCode"], apk["binary"]["sha1"]);
