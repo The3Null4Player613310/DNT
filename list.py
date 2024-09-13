@@ -8,10 +8,11 @@ import sys
 import json
 import urllib3 as ulib;
 import requests as req;
+import google.auth.exceptions;
 #import httplib2 as hlib;
-from sys import argv
+from sys import argv;
 #from oauth2client import client as cl;
-import googleapiclient.discovery as api
+import googleapiclient.discovery as api;
 from google.oauth2 import service_account as sa;
 
 
