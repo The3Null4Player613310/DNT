@@ -23,6 +23,16 @@ SAE = "";
 KEY = "";
 SAI = "";
 
+def r_print(a, n):
+    print(("   " * n) + a);
+    for k in a:
+        r_print(k, n+1):
+    return;
+
+def r_print(a)
+    r_print(a, 0);
+    return;
+
 def main():
 
     args = argv[1:];
@@ -94,10 +104,7 @@ def main():
         result = list_request.execute();
         #print(result);
         
-        for val in result:
-            print(val);
-            for v in val:
-                print(v);
+        r_print(result);
         
         #for apk in result["apks"]:
             #print(apk["versionCode"], apk["binary"]["sha1"]);
