@@ -26,7 +26,7 @@ SAI = "";
 def r_print(a, n):
     print(("   " * n) + a);
     for k in a:
-        r_print(k, n+1):
+        r_print(k, n+1);
     return;
 
 def r_print(a)
