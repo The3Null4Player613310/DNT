@@ -25,8 +25,9 @@ SAI = "";
 
 def r_print(a, n=0):
     print(("   " * n), a);
-    for k in a:
-        r_print(k, n+1);
+    if not isinstance(k, str):
+        for k in a:
+            r_print(k, n+1);
     return;
 
 def main():
