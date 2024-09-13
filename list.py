@@ -23,14 +23,10 @@ SAE = "";
 KEY = "";
 SAI = "";
 
-def r_print(a, n):
+def r_print(a, n=0):
     print(("   " * n) + a);
     for k in a:
         r_print(k, n+1);
-    return;
-
-def r_print(a):
-    r_print(a, 0);
     return;
 
 def main():
