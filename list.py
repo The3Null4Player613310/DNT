@@ -101,7 +101,6 @@ def main():
         result = list_request.execute();
         #print(result);
         
-        r_print(service);
         r_print(result);
         
         #for apk in result["apks"]:
